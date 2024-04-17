@@ -14,6 +14,6 @@ export {
 export type { TreeItemComponentProps, TreeItems, TreeItem, SortableTreeProps };
 
 export function helloAnything(thing: string): string {
-    console.log(thing)
+ 
     return `Hello ${thing}!`
   }
