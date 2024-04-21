@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/dnd-dynamic-tree.svg)](https://www.npmjs.org/package/dnd-dynamic-tree) [![npm](https://img.shields.io/npm/dt/dnd-dynamic-tree.svg)](https://www.npmjs.org/package/dnd-dynamic-tree) [![MIT](https://img.shields.io/dub/l/vibe-d.svg)](https://opensource.org/licenses/MIT)
 
-This is a Tree component extracted from [dndkit](https://github.com/shantanusoam/dnd-dynamic-tree/dnd-drag.png) examples and abstracted a bit.
+This is a Tree component extracted from [dndkit](https://raw.githubusercontent.com/shantanusoam/dnd-dynamic-tree/main/dnd-kit-folder.png) examples and abstracted a bit.
 Here's how it could look like (visuals are completely customizable via css though)
 [![img.png](img.png)](https://shantanusoam.github.io/dnd-dynamic-tree)
 
