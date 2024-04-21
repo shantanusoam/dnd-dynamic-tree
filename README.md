@@ -4,7 +4,7 @@
 
 This is a Tree component extracted from [dndkit](https://raw.githubusercontent.com/shantanusoam/dnd-dynamic-tree/main/dnd-kit-folder.png) examples and abstracted a bit.
 Here's how it could look like (visuals are completely customizable via css though)
-[![img.png](img.png)](https://shantanusoam.github.io/dnd-dynamic-tree)
+[![img.png](img.png)](https://raw.githubusercontent.com/shantanusoam/dnd-dynamic-tree/main/dnd-kit-folder.png)
 
 Play around in [examples](https://shantanusoam.github.io/dnd-dynamic-tree) to check the API and see what it can do.
 
