@@ -4,7 +4,7 @@
 
 
 Here's how it could look like (visuals are completely customizable via css though)
-[![img.png](img.png)](https://github.com/shantanusoam/dnd-dynamic-tree/blob/main/dnd-kit-folder.png?raw=true)
+![screenshot](https://github.com/shantanusoam/dnd-dynamic-tree/blob/main/dnd-kit-folder.png?raw=true)
 
 Play around in [examples](https://shantanusoam.github.io/dnd-dynamic-tree) to check the API and see what it can do.
 
