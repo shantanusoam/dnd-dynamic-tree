@@ -11,6 +11,19 @@ Folder Look
 
 Play around in [examples](https://shantanusoam.github.io/dnd-dynamic-tree) to check the API and see what it can do.
 
+## Features
+
+- Custom trigger element
+- Custom drag Element
+- Multi nth level submenu support
+- Automatic State update and Postion generation
+- Specific props to each dnd item
+- Auto positioning of each dnd-item
+- Equbied with all the dnd-kit helpers
+- Written in TypeScript 🤙
+
+
+
 ## Install
 
     npm install dnd-dynamic-tree @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities

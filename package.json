@@ -5,6 +5,7 @@
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
+  "keywords": ["react-dnd", "dnd-tree", "dnd-sortable", "dnd-dynamic-tree", "typescript", "tree", "react"],
   "homepage": "https://github.com/shantanusoam/dnd-dynamic-tree",
 "repository": {
     "type": "git",
