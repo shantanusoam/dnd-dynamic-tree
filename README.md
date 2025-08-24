@@ -188,5 +188,5 @@ Contributions are welcome! The development setup is now properly configured:
 
 ## 📄 License
 
-MIT © [Shantanu Samaddar](https://github.com/shantanusoam)
+MIT © [Shantanu Soam](https://github.com/shantanusoam)
 
