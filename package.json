@@ -3,8 +3,17 @@
   "private": false,
   "version": "0.1.2",
   "type": "module",
-  "main": "dist/main.js",
-  "types": "dist/main.d.ts",
+  "main": "dist/lib/main.js",
+  "module": "dist/lib/main.js",
+  "types": "dist/lib/main.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/lib/main.d.ts",
+      "import": "./dist/lib/main.js"
+    },
+    "./styles": "./dist/lib/dynamic-Tree/ui/simple/SimpleTreeItemWrapper.css",
+    "./folder-styles": "./dist/lib/dynamic-Tree/ui/folder/FolderTreeItemWrapper.css"
+  },
   "keywords": ["react-dnd", "dnd-tree", "dnd-sortable", "dnd-dynamic-tree", "typescript", "tree", "react"],
   "homepage": "https://github.com/shantanusoam/dnd-dynamic-tree",
 "repository": {
@@ -21,13 +30,19 @@
     "**/*.css"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc --p ./tsconfig-build.json && vite build",
+    "dev": "vite --host",
+    "dev:demo": "vite --host",
+    "build": "npm run build:lib && npm run build:types",
+    "build:demo": "vite build",
+    "build:lib": "vite build --mode lib",
+    "build:types": "tsc --project tsconfig-build.json",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "preview": "vite preview",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build:lib && npm run build:types",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test": "echo \"No tests yet\""
   },
   "peerDependencies": {
     "@dnd-kit/core": "^6.1.0",

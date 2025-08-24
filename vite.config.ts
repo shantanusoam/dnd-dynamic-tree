@@ -1,37 +1,47 @@
 import { defineConfig } from 'vite'
-
 import react from '@vitejs/plugin-react-swc'
 import dts from 'vite-plugin-dts'
-import { extname, relative, resolve } from 'path'
-import { fileURLToPath } from 'node:url'
-import { glob } from 'glob'
+import { resolve } from 'path'
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
-// https://vitejs.dev/config/
+
+// Check if we're building the library or running in dev mode
+const isLibBuild = process.env.NODE_ENV === 'lib' || process.argv.includes('--mode') && process.argv.includes('lib')
+
 export default defineConfig({
-  plugins: [react(), dts({ include: ['lib'] }),  libInjectCss()],
-    build: {
-        copyPublicDir: false,
-        rollupOptions: {
-            external: ['react', 'react/jsx-runtime'],
-            input: Object.fromEntries(
-                    glob.sync('lib/**/*.{ts,tsx}').map(file => [
-                      // The name of the entry point
-                      // lib/nested/foo.ts becomes nested/foo
-                      relative(
-                         'lib',
-                         file.slice(0, file.length - extname(file).length)
-                       ),
-                       // The absolute path to the entry file
-                      // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
-                      fileURLToPath(new URL(file, import.meta.url))
-                     ])),
-                         output: {
-                             assetFileNames: 'assets/[name][extname]',
-                            entryFileNames: '[name].js',
-                           }
-        },
-       lib: {
-          entry: resolve(__dirname, 'lib/main.ts'),
-          formats: ['es']
+  plugins: [
+    react(),
+    // Only use dts and libInjectCss when building the library
+    ...(isLibBuild ? [
+      dts({
+        include: ['lib'],
+        exclude: ['lib/**/*.test.*', 'lib/**/*.stories.*']
+      }),
+      libInjectCss()
+    ] : [])
+  ],
+  build: isLibBuild ? {
+    copyPublicDir: false,
+    lib: {
+      entry: resolve(__dirname, 'lib/main.ts'),
+      name: 'dnd-dynamic-tree',
+      formats: ['es', 'umd'],
+      fileName: (format) => `lib/main.${format}.js`
+    },
+    rollupOptions: {
+      external: ['react', 'react/jsx-runtime', '@dnd-kit/core', '@dnd-kit/sortable', '@dnd-kit/utilities', 'clsx'],
+      output: {
+        globals: {
+          'react': 'React',
+          'react/jsx-runtime': 'react/jsx-runtime',
+          '@dnd-kit/core': 'DndKitCore',
+          '@dnd-kit/sortable': 'DndKitSortable',
+          '@dnd-kit/utilities': 'DndKitUtilities',
+          'clsx': 'clsx'
         }
-}})
+      }
+    }
+  } : {
+    // Regular build for the demo app
+    outDir: 'dist-demo'
+  }
+})
